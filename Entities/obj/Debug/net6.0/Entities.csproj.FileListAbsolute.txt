@@ -1,0 +1,12 @@
+D:\Testings\GpQuizApi\Entities\bin\Debug\net6.0\Entities.deps.json
+D:\Testings\GpQuizApi\Entities\bin\Debug\net6.0\Entities.dll
+D:\Testings\GpQuizApi\Entities\bin\Debug\net6.0\Entities.pdb
+D:\Testings\GpQuizApi\Entities\obj\Debug\net6.0\Entities.csproj.AssemblyReference.cache
+D:\Testings\GpQuizApi\Entities\obj\Debug\net6.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Testings\GpQuizApi\Entities\obj\Debug\net6.0\Entities.AssemblyInfoInputs.cache
+D:\Testings\GpQuizApi\Entities\obj\Debug\net6.0\Entities.AssemblyInfo.cs
+D:\Testings\GpQuizApi\Entities\obj\Debug\net6.0\Entities.csproj.CoreCompileInputs.cache
+D:\Testings\GpQuizApi\Entities\obj\Debug\net6.0\Entities.dll
+D:\Testings\GpQuizApi\Entities\obj\Debug\net6.0\refint\Entities.dll
+D:\Testings\GpQuizApi\Entities\obj\Debug\net6.0\Entities.pdb
+D:\Testings\GpQuizApi\Entities\obj\Debug\net6.0\ref\Entities.dll

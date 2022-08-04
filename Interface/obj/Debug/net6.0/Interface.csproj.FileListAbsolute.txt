@@ -1,0 +1,15 @@
+D:\Testings\GpQuizApi\Interface\bin\Debug\net6.0\Interface.deps.json
+D:\Testings\GpQuizApi\Interface\bin\Debug\net6.0\Interface.dll
+D:\Testings\GpQuizApi\Interface\bin\Debug\net6.0\Interface.pdb
+D:\Testings\GpQuizApi\Interface\bin\Debug\net6.0\Entities.dll
+D:\Testings\GpQuizApi\Interface\bin\Debug\net6.0\Entities.pdb
+D:\Testings\GpQuizApi\Interface\obj\Debug\net6.0\Interface.csproj.AssemblyReference.cache
+D:\Testings\GpQuizApi\Interface\obj\Debug\net6.0\Interface.GeneratedMSBuildEditorConfig.editorconfig
+D:\Testings\GpQuizApi\Interface\obj\Debug\net6.0\Interface.AssemblyInfoInputs.cache
+D:\Testings\GpQuizApi\Interface\obj\Debug\net6.0\Interface.AssemblyInfo.cs
+D:\Testings\GpQuizApi\Interface\obj\Debug\net6.0\Interface.csproj.CoreCompileInputs.cache
+D:\Testings\GpQuizApi\Interface\obj\Debug\net6.0\Interface.csproj.CopyComplete
+D:\Testings\GpQuizApi\Interface\obj\Debug\net6.0\Interface.dll
+D:\Testings\GpQuizApi\Interface\obj\Debug\net6.0\refint\Interface.dll
+D:\Testings\GpQuizApi\Interface\obj\Debug\net6.0\Interface.pdb
+D:\Testings\GpQuizApi\Interface\obj\Debug\net6.0\ref\Interface.dll
