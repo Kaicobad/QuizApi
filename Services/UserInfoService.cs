@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -46,12 +47,59 @@ namespace Services
 
         public string Delete(UserInfoModel userinfo)
         {
-            throw new NotImplementedException();
+           
+            SqlConnection cn = new SqlConnection();
+            cn.ConnectionString = "Server=LYCAN\\SQLEXPRESS;Database=GpQuizDB;uid=sa;password=1234;Trusted_Connection=True;MultipleActiveResultSets=true";
+            cn.Open();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = cn;
+            cmd.CommandText = "delete from UserInfo where UserId = '" + userinfo.UserId + "' ";
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                return "Deleted !";
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         public List<UserInfoModel> GetAll()
         {
-            throw new NotImplementedException();
+            List<UserInfoModel> list = new List<UserInfoModel>();
+
+            DataTable dt = new DataTable();
+
+            SqlConnection cn = new SqlConnection();
+            cn.ConnectionString = "Server=LYCAN\\SQLEXPRESS;Database=GpQuizDB;uid=sa;password=1234;Trusted_Connection=True;MultipleActiveResultSets=true";
+            cn.Open();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = cn;
+            cmd.CommandText = "select * from UserInfo";
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                UserInfoModel um = new UserInfoModel();
+
+                um.UserId =  Guid.Parse(dt.Rows[i]["UserId"].ToString());
+                um.UserName = dt.Rows[i]["UserName"].ToString();
+                um.ImageUrl = dt.Rows[i]["ImageUrl"].ToString();
+                um.PhoneNumber = dt.Rows[i]["PhoneNumber"].ToString();
+                um.Gender = dt.Rows[i]["Gender"].ToString();
+                um.DateOfBirth = (DateTime)dt.Rows[i]["DateOfBirth"];
+                um.CreatedDate = (DateTime)dt.Rows[i]["CreatedDate"];
+                um.ModifiedDate = (DateTime)dt.Rows[i]["ModifiedDate"];
+
+                list.Add(um);
+            }
+            return list;
         }
 
         public List<UserInfoModel> GetByUserId(int userId)

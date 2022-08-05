@@ -28,5 +28,32 @@ namespace MyGPQuizApi.Controllers
                 return BadRequest();
             }
         }
+        [HttpDelete]
+        public IActionResult DeleteUser(UserInfoModel employeeModel)
+        {
+            try
+            {
+                var model = _IUserInfo.Delete(employeeModel);
+                return Ok(model);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        [HttpGet]
+        public List<UserInfoModel> GetAll()
+        {
+            try
+            {
+                //var list = _IUserInfo.GetAll();
+                return _IUserInfo.GetAll();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
     }
 }
