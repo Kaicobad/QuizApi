@@ -43,6 +43,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -148,6 +154,9 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "D:\\Testings\\GpQuizApi\\DAL\\DAL.csproj": {
+                "projectPath": "D:\\Testings\\GpQuizApi\\DAL\\DAL.csproj"
+              },
               "D:\\Testings\\GpQuizApi\\Entities\\Entities.csproj": {
                 "projectPath": "D:\\Testings\\GpQuizApi\\Entities\\Entities.csproj"
               }

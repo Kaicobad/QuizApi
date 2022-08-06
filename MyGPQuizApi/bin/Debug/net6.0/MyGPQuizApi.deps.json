@@ -141,6 +141,9 @@
       },
       "System.Security.Principal.Windows/4.7.0": {},
       "DAL/1.0.0": {
+        "dependencies": {
+          "System.Data.SqlClient": "4.8.3"
+        },
         "runtime": {
           "DAL.dll": {}
         }
@@ -152,6 +155,7 @@
       },
       "Interface/1.0.0": {
         "dependencies": {
+          "DAL": "1.0.0",
           "Entities": "1.0.0"
         },
         "runtime": {

@@ -10,13 +10,62 @@ namespace DAL
 {
     public class DataBaseContext
     {
-        //public string Insert()
-        //{
-        //    SqlConnection cn = new SqlConnection();
-        //    cn.Open();
-        //    cn.ConnectionString = 
+        public string? Error { get; set; }
+        public string? ErrorCode { get; set; }
 
-        //    return "Inserted";
-        //}
+        public SqlConnection cn = new();
+
+        public SqlCommand? CustomCommand;
+        public SqlDataReader? CustomReader;
+
+
+
+        public bool DbConnection()
+        {
+            if (cn.State == ConnectionState.Open)
+            {
+                return true;
+            }
+
+            cn.ConnectionString = "Server=LYCAN\\SQLEXPRESS;Database=GpQuizDB;uid=sa;password=1234;Trusted_Connection=True;MultipleActiveResultSets=true";
+            try
+            {
+                cn.Open();
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return false;
+        }
+
+        public SqlCommand CustomCommandBuilder(string sql)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = cn;
+            cmd.CommandText = sql;
+            return cmd;
+        }
+
+        public bool ExecuteNonQuery(SqlCommand cmd)
+        {
+            if (!DbConnection())
+            {
+                return false;  
+            }
+            try
+            {
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        
+        }
+
     }
 }

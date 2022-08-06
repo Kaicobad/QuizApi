@@ -15,20 +15,35 @@ namespace MyGPQuizApi.Controllers
         {
             _IUserInfo = iuserInfo;
         }
-        [HttpPost]
+        [HttpPost("insertUser")]
         public IActionResult InsertUser(UserInfoModel employeeModel)
         {
             try
             {
                 var model = _IUserInfo.Insert(employeeModel);
-                return Ok(model);
+                return Ok(new { statusCode = 200, message = "User Added" });
             }
             catch (Exception)
             {
                 return BadRequest();
             }
         }
-        [HttpDelete]
+
+        [HttpPut("updateUser")]
+        public IActionResult UpdateUser(UserInfoModel employeeModel)
+        {
+            try
+            {
+                var model = _IUserInfo.Update(employeeModel);
+                return Ok(new { statusCode = 200, message = "User Updated" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("deleteUser")]
         public IActionResult DeleteUser(UserInfoModel employeeModel)
         {
             try
@@ -41,13 +56,15 @@ namespace MyGPQuizApi.Controllers
                 return BadRequest();
             }
         }
-        [HttpGet]
-        public List<UserInfoModel> GetAll()
+        [HttpGet("getallUser")]
+        public IActionResult GetAll()
         {
             try
             {
-                //var list = _IUserInfo.GetAll();
-                return _IUserInfo.GetAll();
+                var list = _IUserInfo.GetAll();
+                //return _IUserInfo.GetAll();
+
+                return Ok(new { statusCode = 200, message = "success", value = list });
             }
             catch (Exception ex)
             {

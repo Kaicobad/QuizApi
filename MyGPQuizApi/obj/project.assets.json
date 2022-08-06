@@ -205,6 +205,9 @@
       "DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "System.Data.SqlClient": "4.8.3"
+        },
         "compile": {
           "bin/placeholder/DAL.dll": {}
         },
@@ -226,6 +229,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "DAL": "1.0.0",
           "Entities": "1.0.0"
         },
         "compile": {

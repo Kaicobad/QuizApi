@@ -5,33 +5,32 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
 using Entities;
 using Interface;
 
 namespace Services
 {
-    public class UserInfoService : IUserInfo
+    public class UserInfoService : DataBaseContext, IUserInfo
     {
-        //public UserInfoService(IConfiguration)
-        //{
-
-        //}
         public string Insert(UserInfoModel userinfo)
         {
-            SqlConnection cn = new SqlConnection();
-            cn.ConnectionString = "Server=LYCAN\\SQLEXPRESS;Database=GpQuizDB;uid=sa;password=1234;Trusted_Connection=True;MultipleActiveResultSets=true";
-            cn.Open();
+            CustomCommand = CustomCommandBuilder(@"INSERT INTO UserInfo (UserId,UserName,ImageUrl,
+            PhoneNumber,Gender,DateOfBirth,CreatedDate,ModifiedDate) VALUES(@UserId, @UserName, 
+            @ImageUrl, @PhoneNumber, @Gender, @DateOfBirth,@CreatedDate, @ModifiedDate) ");
 
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = cn;
-            cmd.CommandText ="INSERT INTO UserInfo (UserId,UserName,ImageUrl,PhoneNumber,Gender,DateOfBirth,CreatedDate,ModifiedDate)"
-                            + "VALUES('" + userinfo.UserId + "', '" + userinfo.UserName + "', '" + userinfo.ImageUrl + "',"
-                            + "'" + userinfo.PhoneNumber + "', '" + userinfo.Gender + "', '" + userinfo.DateOfBirth + "'," +
-                            "'" + userinfo.CreatedDate + "', '" + userinfo.ModifiedDate + "') ";
-            
+            CustomCommand.Parameters.AddWithValue("@UserId", userinfo.UserId);
+            CustomCommand.Parameters.AddWithValue("@UserName", userinfo.UserName);
+            CustomCommand.Parameters.AddWithValue("@ImageUrl", userinfo.ImageUrl);
+            CustomCommand.Parameters.AddWithValue("@PhoneNumber", userinfo.PhoneNumber);
+            CustomCommand.Parameters.AddWithValue("@Gender", userinfo.Gender);
+            CustomCommand.Parameters.AddWithValue("@DateOfBirth", userinfo.DateOfBirth);
+            CustomCommand.Parameters.AddWithValue("@CreatedDate", userinfo.CreatedDate);
+            CustomCommand.Parameters.AddWithValue("@ModifiedDate", userinfo.ModifiedDate);
+
             try
             {
-                cmd.ExecuteNonQuery();
+                ExecuteNonQuery(CustomCommand);
                 return "Success !";
             }
             catch (Exception ex)
@@ -42,23 +41,39 @@ namespace Services
 
         public string Update(UserInfoModel userinfo)
         {
-            throw new NotImplementedException();
+            CustomCommand = CustomCommandBuilder(@"UPDATE UserInfo SET UserName = @UserName, 
+            ImageUrl = @ImageUrl, PhoneNumber = @PhoneNumber, Gender = @Gender, DateOfBirth = @DateOfBirth,
+            CreatedDate = @CreatedDate, ModifiedDate = @ModifiedDate WHERE UserId = @UserId");
+
+            CustomCommand.Parameters.AddWithValue("@UserId", userinfo.UserId);
+            CustomCommand.Parameters.AddWithValue("@UserName", userinfo.UserName);
+            CustomCommand.Parameters.AddWithValue("@ImageUrl", userinfo.ImageUrl);
+            CustomCommand.Parameters.AddWithValue("@PhoneNumber", userinfo.PhoneNumber);
+            CustomCommand.Parameters.AddWithValue("@Gender", userinfo.Gender);
+            CustomCommand.Parameters.AddWithValue("@DateOfBirth", userinfo.DateOfBirth);
+            CustomCommand.Parameters.AddWithValue("@CreatedDate", userinfo.CreatedDate);
+            CustomCommand.Parameters.AddWithValue("@ModifiedDate", userinfo.ModifiedDate);
+
+            try
+            {
+                ExecuteNonQuery(CustomCommand);
+                return "Success !";
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
         public string Delete(UserInfoModel userinfo)
         {
-           
-            SqlConnection cn = new SqlConnection();
-            cn.ConnectionString = "Server=LYCAN\\SQLEXPRESS;Database=GpQuizDB;uid=sa;password=1234;Trusted_Connection=True;MultipleActiveResultSets=true";
-            cn.Open();
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = cn;
-            cmd.CommandText = "delete from UserInfo where UserId = '" + userinfo.UserId + "' ";
+            CustomCommand = CustomCommandBuilder(@"delete from UserInfo where UserId = @UserId ");
+            CustomCommand.Parameters.AddWithValue("@UserId", userinfo.UserId);
 
             try
             {
-                cmd.ExecuteNonQuery();
+                ExecuteNonQuery(CustomCommand);
                 return "Deleted !";
             }
             catch (Exception ex)
@@ -71,7 +86,11 @@ namespace Services
         {
             List<UserInfoModel> list = new List<UserInfoModel>();
 
+
             DataTable dt = new DataTable();
+
+
+            //_DataBaseContext.DbConnection();
 
             SqlConnection cn = new SqlConnection();
             cn.ConnectionString = "Server=LYCAN\\SQLEXPRESS;Database=GpQuizDB;uid=sa;password=1234;Trusted_Connection=True;MultipleActiveResultSets=true";
@@ -88,7 +107,7 @@ namespace Services
             {
                 UserInfoModel um = new UserInfoModel();
 
-                um.UserId =  Guid.Parse(dt.Rows[i]["UserId"].ToString());
+                um.UserId = Guid.Parse(dt.Rows[i]["UserId"].ToString());
                 um.UserName = dt.Rows[i]["UserName"].ToString();
                 um.ImageUrl = dt.Rows[i]["ImageUrl"].ToString();
                 um.PhoneNumber = dt.Rows[i]["PhoneNumber"].ToString();
@@ -102,9 +121,34 @@ namespace Services
             return list;
         }
 
-        public List<UserInfoModel> GetByUserId(int userId)
+        public List<UserInfoModel> GetByUserId(UserInfoModel userinfo)
         {
-            throw new NotImplementedException();
+            List<UserInfoModel> list = new();
+
+            CustomCommand = CustomCommandBuilder(@"select UserName, ImageUrl, PhoneNumber, Gender, DateOfBirth,
+            CreatedDate, ModifiedDate from UserInfo WHERE UserId = @UserId");
+
+            CustomCommand.Parameters.AddWithValue("@UserId", userinfo.UserId);
+
+            CustomReader = CustomCommand.ExecuteReader();
+
+            while (CustomReader.Read())
+            {
+                userinfo.UserId = Guid.Parse(CustomReader["UserId"].ToString());
+                userinfo.UserName = CustomReader["UserName"].ToString();
+                userinfo.ImageUrl = CustomReader["ImageUrl"].ToString();
+                userinfo.PhoneNumber = CustomReader["PhoneNumber"].ToString();
+                userinfo.Gender = CustomReader["Gender"].ToString();
+                userinfo.DateOfBirth = (DateTime)(CustomReader["DateOfBirth"]);
+                userinfo.CreatedDate = (DateTime)(CustomReader["CreatedDate"]);
+                userinfo.ModifiedDate = (DateTime)(CustomReader["ModifiedDate"]);
+
+                list.Add(userinfo);
+
+                return list;
+            }
+            return null;
+            
         }
 
         public int GetCount()

@@ -13,7 +13,7 @@ namespace Interface
         public string Update(UserInfoModel userinfo);
         public string Delete(UserInfoModel userinfo);
         public List<UserInfoModel> GetAll();
-        public List<UserInfoModel> GetByUserId(int userId);
+        public List<UserInfoModel> GetByUserId(UserInfoModel userInfo);
         public int GetCount();
         public int GetCountByUserId(int userId);
     }
