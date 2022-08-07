@@ -15,11 +15,11 @@ namespace Services
     {
         public string Insert(UserInfoModel userinfo)
         {
-            CustomCommand = CustomCommandBuilder(@"INSERT INTO UserInfo (UserId,UserName,ImageUrl,
-            PhoneNumber,Gender,DateOfBirth,CreatedDate,ModifiedDate) VALUES(@UserId, @UserName, 
+            CustomCommand = CustomCommandBuilder(@"INSERT INTO UserInfo (UserName,ImageUrl,
+            PhoneNumber,Gender,DateOfBirth,CreatedDate,ModifiedDate) VALUES(@UserName, 
             @ImageUrl, @PhoneNumber, @Gender, @DateOfBirth,@CreatedDate, @ModifiedDate) ");
 
-            CustomCommand.Parameters.AddWithValue("@UserId", userinfo.UserId);
+            //CustomCommand.Parameters.AddWithValue("@UserId", userinfo.UserId);
             CustomCommand.Parameters.AddWithValue("@UserName", userinfo.UserName);
             CustomCommand.Parameters.AddWithValue("@ImageUrl", userinfo.ImageUrl);
             CustomCommand.Parameters.AddWithValue("@PhoneNumber", userinfo.PhoneNumber);

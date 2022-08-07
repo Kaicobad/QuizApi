@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace Entities.AuthModel
 {
     public class LoginModel
     {
-        public string PhoneNumber { get; set; }
+        public string? msidn { get; set; }
+
     }
 }
