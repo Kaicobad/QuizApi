@@ -11,11 +11,11 @@ namespace MyGPQuizApi.Controllers
     {
         private readonly Jwtservice _jwts;
 
-        public LoginController(Jwtservice jwts)
-        {
-            _jwts = jwts;
-        }
-        [HttpPost]
+        //public LoginController(Jwtservice jwts)
+        //{
+        //    _jwts = jwts;
+        //}
+        //[HttpPost]
         //public Task<IActionResult> Post(LoginModel _userData)
         //{
         //    try
@@ -29,5 +29,5 @@ namespace MyGPQuizApi.Controllers
         //    }
         //}
 
-    //}
+    }
 }

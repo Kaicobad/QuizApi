@@ -21,7 +21,7 @@ namespace Services
         {
             _Congiguration = congiguration;
         }
-        public object GenerateToken(UserInfoModel _Usermodel)
+        public string GenerateToken(UserInfoModel _Usermodel)
         {
             if (_Usermodel.PhoneNumber != null )
             {
@@ -64,10 +64,7 @@ namespace Services
         //    throw new NotImplementedException();
         //}
 
-        private string Ok(string v)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         private List<UserInfoModel> GetUser(string phoneNumber)
         {
