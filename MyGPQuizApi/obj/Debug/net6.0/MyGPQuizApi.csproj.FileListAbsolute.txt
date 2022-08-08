@@ -39,3 +39,11 @@ D:\Testings\GpQuizApi\MyGPQuizApi\obj\Debug\net6.0\refint\MyGPQuizApi.dll
 D:\Testings\GpQuizApi\MyGPQuizApi\obj\Debug\net6.0\MyGPQuizApi.pdb
 D:\Testings\GpQuizApi\MyGPQuizApi\obj\Debug\net6.0\MyGPQuizApi.genruntimeconfig.cache
 D:\Testings\GpQuizApi\MyGPQuizApi\obj\Debug\net6.0\ref\MyGPQuizApi.dll
+D:\Testings\GpQuizApi\MyGPQuizApi\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Testings\GpQuizApi\MyGPQuizApi\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Testings\GpQuizApi\MyGPQuizApi\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\Testings\GpQuizApi\MyGPQuizApi\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\Testings\GpQuizApi\MyGPQuizApi\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Testings\GpQuizApi\MyGPQuizApi\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Testings\GpQuizApi\MyGPQuizApi\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\Testings\GpQuizApi\MyGPQuizApi\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll

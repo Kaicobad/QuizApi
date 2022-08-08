@@ -9,5 +9,6 @@ namespace Entities.AuthModel
     public class LoginModel
     {
         public string? msidn { get; set; }
+        //public int OTP { get; set; }
     }
 }

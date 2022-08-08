@@ -70,7 +70,6 @@ namespace Services
         {
             CustomCommand = CustomCommandBuilder(@"delete from UserInfo where UserId = @UserId ");
             CustomCommand.Parameters.AddWithValue("@UserId", userinfo.UserId);
-
             try
             {
                 ExecuteNonQuery(CustomCommand);
