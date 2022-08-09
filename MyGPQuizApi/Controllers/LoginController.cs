@@ -1,5 +1,6 @@
 ﻿using Entities;
 using Entities.AuthModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -23,6 +24,7 @@ namespace MyGPQuizApi.Controllers
             this.configuration = configuration;
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Login([FromBody] LoginModel loginModel)
         {

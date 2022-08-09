@@ -1,7 +1,9 @@
 ﻿using Entities;
 using Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace MyGPQuizApi.Controllers
 {
@@ -56,6 +58,7 @@ namespace MyGPQuizApi.Controllers
                 return BadRequest();
             }
         }
+
         [HttpGet("getallUser")]
         public IActionResult GetAll()
         {
@@ -72,5 +75,31 @@ namespace MyGPQuizApi.Controllers
                 throw;
             }
         }
+
+        //public UserInfoModel GetCurrentUser()
+        //{
+        //    var Identity = HttpContext.User.Identity as ClaimsIdentity;
+        //    if (Identity != null)
+        //    {
+        //        var userClaims = Identity.Claims;
+
+        //        var userPhone = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value;
+
+        //        var userDetailsAsClaims = _IUserInfo.GetAll().FirstOrDefault(o => o.PhoneNumber == userPhone);
+
+        //        return new UserInfoModel
+        //        {
+        //            UserId = userDetailsAsClaims.UserId,
+        //            UserName = userDetailsAsClaims.UserName,
+        //            ImageUrl = userDetailsAsClaims.ImageUrl,
+        //            PhoneNumber = userDetailsAsClaims.PhoneNumber,
+        //            Gender = userDetailsAsClaims.Gender,
+        //            DateOfBirth = userDetailsAsClaims.DateOfBirth,
+        //            CreatedDate = userDetailsAsClaims.CreatedDate,
+        //            ModifiedDate = userDetailsAsClaims.ModifiedDate
+        //        };
+        //    }
+        //    return null;
+        //}
     }
 }
