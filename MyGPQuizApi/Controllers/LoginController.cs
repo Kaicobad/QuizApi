@@ -23,14 +23,14 @@ namespace MyGPQuizApi.Controllers
             this.configuration = configuration;
         }
 
-        [HttpPost("login")]
+        [HttpPost]
         public IActionResult Login([FromBody] LoginModel loginModel)
         {
             var msidn = Authenticate(loginModel);
 
             if (msidn != null)
             {
-                var token = Gnenerate(userinfo);
+                var token = Gnenerate(msidn);
                 return Ok (token);
             }
             return BadRequest();
